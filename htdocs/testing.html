@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тестовая карта со случайным маркером</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тестовая карта со случайным маркером</h1>
+    
+    <div id="map"></div>
+
+    <script>
+        const apiKey = 'AIzaSyCtZomP6YgVJzCoBSOuanjXOZF2yi70Guo'; // Замените на свой ключ API Google Maps
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 55.7558, lng: 37.6173 }, // Начальные координаты центра карты (Москва)
+                zoom: 12
+            });
+
+            // Генерация случайных координат в пределах Москвы
+            const randomLat = 55.55 + Math.random() * 0.15; // Пример для широты Москвы
+            const randomLng = 37.35 + Math.random() * 0.3; // Пример для долготы Москвы
+
+            const randomMarker = new google.maps.Marker({
+                position: { lat: randomLat, lng: randomLng },
+                map: map,
+                title: 'random marker'
+            });
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?= $apiKey ?>&callback=initMap" async defer></script>
+</body>
+</html>
